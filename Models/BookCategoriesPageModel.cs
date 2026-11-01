@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-using Niste_Marius_Lab2;
 
 namespace Niste_Marius_Lab2.Models
 {

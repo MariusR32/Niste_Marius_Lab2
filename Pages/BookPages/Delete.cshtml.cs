@@ -28,7 +28,6 @@ public class DeleteModel : PageModel
             .Include(b => b.Publisher)
             .Include(b => b.Author)
             .FirstOrDefaultAsync(m => m.ID == id);
-
         if (book is null)
         {
             return NotFound();

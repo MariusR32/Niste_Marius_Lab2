@@ -5,45 +5,40 @@
 namespace Niste_Marius_Lab2.Migrations
 {
     /// <inheritdoc />
-    public partial class AddAuthorEntity : Migration
+    public partial class PublisherMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Author",
-                table: "Book");
-
             migrationBuilder.AddColumn<int>(
-                name: "AuthorID",
+                name: "PublisherID",
                 table: "Book",
                 type: "int",
                 nullable: true);
 
             migrationBuilder.CreateTable(
-                name: "Author",
+                name: "Publisher",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    PublisherName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Author", x => x.ID);
+                    table.PrimaryKey("PK_Publisher", x => x.ID);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Book_AuthorID",
+                name: "IX_Book_PublisherID",
                 table: "Book",
-                column: "AuthorID");
+                column: "PublisherID");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Book_Author_AuthorID",
+                name: "FK_Book_Publisher_PublisherID",
                 table: "Book",
-                column: "AuthorID",
-                principalTable: "Author",
+                column: "PublisherID",
+                principalTable: "Publisher",
                 principalColumn: "ID");
         }
 
@@ -51,26 +46,19 @@ namespace Niste_Marius_Lab2.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Book_Author_AuthorID",
+                name: "FK_Book_Publisher_PublisherID",
                 table: "Book");
 
             migrationBuilder.DropTable(
-                name: "Author");
+                name: "Publisher");
 
             migrationBuilder.DropIndex(
-                name: "IX_Book_AuthorID",
+                name: "IX_Book_PublisherID",
                 table: "Book");
 
             migrationBuilder.DropColumn(
-                name: "AuthorID",
+                name: "PublisherID",
                 table: "Book");
-
-            migrationBuilder.AddColumn<string>(
-                name: "Author",
-                table: "Book",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
         }
     }
 }

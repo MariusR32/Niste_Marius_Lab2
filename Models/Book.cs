@@ -1,7 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Reflection.Metadata;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace Niste_Marius_Lab2.Models
 {
@@ -17,7 +15,7 @@ namespace Niste_Marius_Lab2.Models
         [DataType(DataType.Date)]
         public DateTime PublishingDate { get; set; }
         public int? PublisherID { get; set; }
-        public Publisher? Publisher { get; set; }
+        public Publisher? Publisher { get; set; }  //navigation property
         public ICollection<BookCategory>? BookCategories { get; set; }
     }
 }

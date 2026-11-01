@@ -11,15 +11,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Niste_Marius_Lab2.Migrations
 {
     [DbContext(typeof(Niste_Marius_Lab2Context))]
-    [Migration("20261020121140_AddAuthorEntity")]
-    partial class AddAuthorEntity
+    [Migration("20261101184353_BookCategoryModif")]
+    partial class BookCategoryModif
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.13")
+                .HasAnnotation("ProductVersion", "10.0.14")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);

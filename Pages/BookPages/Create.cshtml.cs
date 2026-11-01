@@ -17,12 +17,13 @@ public class CreateModel : BookCategoriesPageModel
 
     public IActionResult OnGet()
     {
-        ViewData["PublisherID"] = new SelectList(_context.Set<Publisher>(), "ID", "PublisherName");
-        ViewData["AuthorID"] = new SelectList(_context.Author, "ID", "LastName");
+        ViewData["AuthorID"] = new SelectList(_context.Set<Author>(), "ID", "LastName");
+        ViewData["PublisherID"] = new SelectList(_context.Publisher, "ID", "PublisherName");
+
         var book = new Book();
         book.BookCategories = new List<BookCategory>();
-
         PopulateAssignedCategoryData(_context, book);
+
         return Page();
     }
 
@@ -47,8 +48,10 @@ public class CreateModel : BookCategoriesPageModel
         }
 
         Book.BookCategories = newBook.BookCategories;
+
         _context.Book.Add(Book);
         await _context.SaveChangesAsync();
+
         return RedirectToPage("./Index");
     }
 }
